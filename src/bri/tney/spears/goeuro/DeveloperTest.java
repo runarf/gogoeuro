@@ -14,10 +14,6 @@ import org.json.JSONTokener;
 import com.opencsv.CSVWriter;
 
 public class DeveloperTest {
-	
-	public static void extractDataFromJSON(String[] args) {
-		
-	}
 
 	public static void csvForm(URL url) {
 
@@ -57,7 +53,8 @@ public class DeveloperTest {
 			System.exit(0);
 		}
 		try {
-			place = URLEncoder.encode(args[0], "UTF-8");
+			place = URLEncoder.encode(args[0], "UTF-8").replace("+", "%20");
+			System.out.println(place);
 			url = new URL("http://api.goeuro.com/api/v2/position/suggest/en/" + place);
 		} catch (UnsupportedEncodingException e) {
 			System.err.println("Caught UnsupportedEncodingException: " + e.getMessage());
